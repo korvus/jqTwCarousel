@@ -49,18 +49,29 @@
 
         function initTwCa(wrapper,sw){
             liftNoSenseValues();
+            var rest = 0;
             var nodeW = $(wrapper);
             var parentNode = nodeW.parent();
             var elts = nodeW.children();
             nbrChildRoot = elts.length;
             widChild = elts.outerWidth(true);
             sizeShift = widChild*params.shift;
-            decalage = nbrChildRoot%params.shift;
+            //decalage = nbrChildRoot%params.shift;
+            decalage = params.shift-(nbrChildRoot%params.shift);
+            gap = decalage;
+            forFullTurn = Math.floor(sw/params.shift);
             nbSlide = Math.ceil((nbrChildRoot-sw)/params.shift);
-            //console.log(nbSlide);
-            //console.log(sw-(nbrChildRoot%sw)
-            var toDuplicate = Array.prototype.slice.call(elts, 0, sw);
+            nbSlide += forFullTurn;
+            hl = sw-(nbrChildRoot%sw)+params.shift;
+            if(hl>nbrChildRoot){
+                rest = hl-nbrChildRoot;
+            }
+            var toDuplicate = Array.prototype.slice.call(elts, 0, hl);
             $(toDuplicate).clone().appendTo(nodeW);
+            if(rest > 0){
+                var toDuplicate2 = Array.prototype.slice.call(elts, 0, rest);
+            }
+            $(toDuplicate2).clone().appendTo(nodeW);
             var nbrChild = nodeW.children().length;
             if(sw!=0){
                 parentNode.css({"overflow":"hidden","width":(sw*widChild)+"px","position":"relative"});
@@ -106,19 +117,27 @@
         }
 
         function moveToLeft(nodeTarget){
-            slided++;
             //console.log(nbSlide+" - "+slided);
+            slided++;
             $(nodeTarget).animate({'left': '-='+sizeShift+'px'},params.speed, function(){
                 triggerClickNext(nodeTarget);
                 triggerClickPrev(nodeTarget);
-                if(0==slided%nbSlide){
+                console.log("test if slide : "+slided%nbSlide +" - slided : "+ slided);
+                if(0==slided % nbSlide){
                     if(decalage>0){
-                        if(gap==decalage){gap=0;}else{gap++;}
-                        
-                        console.log(gap);
-                        //$(nodeTarget).css('left', "-"+(gap*widChild)+"px");
+                        if(gap==0){
+                            $(nodeTarget).css('left', "-"+(gap*widChild)+"px");
+                            console.log("cas 1 : has slided / gap : "+gap+ " Distance : "+(gap*widChild)+"px");
+                            gap=decalage;
+                        }else{
+                            slided++;
+                            console.log("cas 2 : has slided / gap : "+gap+ " Distance : "+(gap*widChild)+"px");
+                            $(nodeTarget).css('left', "-"+(gap*widChild)+"px");
+                            gap--;
+                            //setTimeout(function(){$(nodeTarget).css('left', "-"+(gap*widChild)+"px");gap--;}, 1000);
+                        }
                     }else{
-                        $(nodeTarget).css('left', "0px");
+                        setTimeout(function(){$(nodeTarget).css('left', "0px");}, 1000);
                     }
                 }
             });

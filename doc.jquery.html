@@ -12,7 +12,10 @@
 		html{padding:0;margin:0;font-family:Arial,sans-serif;}
 		li{list-style-type:none;float:left;border:1px solid #000;margin:5px;}
 		li.first{outline:5px solid #f00;}
+		li:first-child{outline:5px solid #ff0;}
+		li:last-child{outline:5px solid #0f0;}
 		li.finserie{outline:5px solid #0ff;}
+		li:last-child{outline:5px solid #f0f;}
 		#example1{width:914px;height:170px;padding:0;margin:0;}
 		.slider-wrapper{position:relative;float:left;height:170px;margin:0 100px;border:1px solid #aaa;}
 		a{text-decoration:none;float:left;margin-top:30px;}
@@ -26,7 +29,7 @@
 			$("#example1").twCarousel({
 				pulse : 3000,
 				sizeWindow : 4,
-				shift : 2,
+				shift : 3,
 				speed : 300,
 				bTnext : $("#next"),
 				bTprev : $("#prev")
@@ -52,7 +55,7 @@
 	    	<li><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/webdistrib.png" width="216" height="156" alt="Webdistrib.com" /></li>
 	    	<li><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/cdiscount.png" width="216" height="156" alt="Cdiscount" />
 	    	</li>
-	    	<li><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/mistergooddeal.png" width="216" height="156" alt="Mister good deal" /></li>
+	    	<li class="finserie"><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/mistergooddeal.png" width="216" height="156" alt="Mister good deal" /></li>
 	    	<li><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/lafayette.png" width="216" height="156" alt="La Fayette" /></li>
 	    	<li><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/laredoute.png" width="216" height="156" alt="La Redoute" /></li>
 	    	<li><img src="http://www.twenga-solutions.com/assets/img/home/carousel/fr/delamaison.png" width="216" height="156" alt="Delamaison.fr" /></li>
