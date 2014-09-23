@@ -12,7 +12,7 @@ The particularity is this carousel accept two mains parameters :
 Version
 ----
 
-1.0.0
+1.0.1
 
 Params
 ----
