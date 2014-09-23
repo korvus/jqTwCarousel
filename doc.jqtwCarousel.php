@@ -10,11 +10,10 @@
 	<style>
 
 		.wrapper{overflow:hidden;border:1px dotted #aaa;position:relative;margin-bottom:15px;}
-
 		html{padding:0;margin:0;font-family:Arial,sans-serif;}
 		li{list-style-type:none;float:left;border:1px solid #000;margin:5px;}
 		.example{height:170px;padding:0;margin:0;}
-		.slider-wrapper{position:relative;float:left;height:170px;margin:0 50px;border:1px solid #aaa;}
+		.slider-wrapper{float:left;height:170px;margin:0 50px;border:1px solid #aaa;}
 		a{text-decoration:none;float:left;margin-top:50px;border:30px solid transparent;}
 		.direction-next{border-left:30px solid #555;}
 		.direction-prev{border-right:30px solid #555;}
